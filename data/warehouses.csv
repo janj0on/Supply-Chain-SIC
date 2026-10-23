@@ -1,0 +1,28 @@
+warehouse_id,warehouse_name,governorate,latitude,longitude
+WH-01,Cairo Distribution Center,Cairo,30.0444,31.2357
+WH-02,Alexandria Distribution Center,Alexandria,31.2001,29.9187
+WH-03,Giza Distribution Center,Giza,30.0131,31.2089
+WH-04,Qalyubia Distribution Center,Qalyubia,30.3292,31.2165
+WH-05,Sharqia Distribution Center,Sharqia,30.5877,31.502
+WH-06,Dakahlia Distribution Center,Dakahlia,31.0364,31.3807
+WH-07,Gharbia Distribution Center,Gharbia,30.8754,31.0335
+WH-08,Monufia Distribution Center,Monufia,30.523,30.9876
+WH-09,Kafr El Sheikh Distribution Center,Kafr El Sheikh,31.1107,30.94
+WH-10,Beheira Distribution Center,Beheira,30.8481,30.3436
+WH-11,Damietta Distribution Center,Damietta,31.4175,31.8144
+WH-12,Port Said Distribution Center,Port Said,31.2653,32.3019
+WH-13,Ismailia Distribution Center,Ismailia,30.5965,32.2715
+WH-14,Suez Distribution Center,Suez,29.9668,32.5498
+WH-15,North Sinai Distribution Center,North Sinai,30.2824,33.6176
+WH-16,South Sinai Distribution Center,South Sinai,28.1099,33.6116
+WH-17,Beni Suef Distribution Center,Beni Suef,29.0661,31.0994
+WH-18,Fayoum Distribution Center,Fayoum,29.3084,30.8428
+WH-19,Minya Distribution Center,Minya,28.1099,30.7503
+WH-20,Assiut Distribution Center,Assiut,27.1809,31.1837
+WH-21,Sohag Distribution Center,Sohag,26.5591,31.6957
+WH-22,Qena Distribution Center,Qena,26.1551,32.716
+WH-23,Luxor Distribution Center,Luxor,25.6872,32.6396
+WH-24,Aswan Distribution Center,Aswan,24.0889,32.8998
+WH-25,Red Sea Distribution Center,Red Sea,27.2579,33.8116
+WH-26,New Valley Distribution Center,New Valley,25.439,30.5586
+WH-27,Matrouh Distribution Center,Matrouh,31.3543,27.2373
