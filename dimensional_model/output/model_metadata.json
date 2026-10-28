@@ -1,0 +1,18 @@
+{
+  "input_directory": "C:\\Users\\Salma\\OneDrive\\Desktop\\Supply-Chain-SIC-kafka-flink\\data",
+  "output_directory": "C:\\Users\\Salma\\OneDrive\\Desktop\\Supply-Chain-SIC-kafka-flink\\dimensional_model\\output",
+  "table_grains": {
+    "dim_date": "one row per UTC calendar date observed across timestamped source events",
+    "dim_product": "one row per product_id",
+    "dim_vehicle": "one row per vehicle_id",
+    "dim_warehouse": "one row per warehouse_id",
+    "dim_route": "one row per unique origin_warehouse_id and destination_warehouse_id pair",
+    "fact_demand": "one row per unique demand event_id",
+    "fact_inventory": "one row per unique inventory event_id",
+    "fact_shipment": "one row per shipment record per source file; dispatch and update records remain separate",
+    "fact_telemetry": "one row per unique telemetry event_id, enriched from ground_truth by event_id when matched",
+    "fact_vehicle_status": "one row per unique vehicle-status event_id",
+    "reference_ground_truth": "one row per unique ground-truth event_id; reference/validation data, not an operational fact"
+  },
+  "note": "CSV outputs only; source files were not modified. Null foreign keys indicate missing dimension matches."
+}

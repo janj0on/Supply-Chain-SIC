@@ -1,0 +1,5 @@
+﻿product_key,product_id,product_name,min_c,max_c
+1,PROD-DAIRY,Dairy,2,6
+2,PROD-DRY,Dry Goods,5,35
+3,PROD-FROZEN,Frozen Food,-18,-12
+4,PROD-PRODUCE,Fresh Produce,4,10

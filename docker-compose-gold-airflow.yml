@@ -1,0 +1,41 @@
+﻿services:
+  airflow:
+    build:
+      context: ./airflow
+      dockerfile: Dockerfile
+    image: supply-chain-airflow:2.10.5
+    container_name: supply-chain-airflow
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+    volumes:
+      - airflow-data:/opt/airflow
+      - ./airflow/dags:/opt/airflow/dags
+      - ./spark:/opt/spark-jobs
+      - /run/host-services/docker.proxy.sock:/var/run/docker.sock
+    command: standalone
+    networks:
+      - pipeline
+
+  spark:
+    build:
+      context: ./spark
+      dockerfile: Dockerfile
+    image: supply-chain-spark:3.5.6
+    container_name: supply-chain-spark
+    restart: unless-stopped
+    command: ["sleep", "infinity"]
+    volumes:
+      - ./spark:/opt/spark-jobs
+    networks:
+      - pipeline
+
+volumes:
+  airflow-data:
+
+networks:
+  pipeline:
+    external: true
+    name: supply-chain-sic-kafka-flink_default
