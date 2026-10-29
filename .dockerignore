@@ -1,0 +1,10 @@
+.git
+data
+logs
+monitoring
+flink
+flink-sql
+airflow
+spark
+*.zip
+__pycache__

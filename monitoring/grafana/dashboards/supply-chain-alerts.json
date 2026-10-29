@@ -1,0 +1,1156 @@
+{
+  "__inputs": [],
+  "annotations": {
+    "list": []
+  },
+  "description": "Alerts written by flink-sql/03_detection.sql to the Kafka topic alerts",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "hideControls": false,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": null,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": ""
+          },
+          "color": null,
+          "custom": {},
+          "decimals": 0,
+          "mappings": [],
+          "unit": "none",
+          "noValue": "none"
+        },
+        "overrides": []
+      },
+      "height": null,
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "hideTimeOverride": false,
+      "id": 1,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "minSpan": null,
+      "repeat": null,
+      "repeatDirection": null,
+      "maxPerRow": null,
+      "span": null,
+      "targets": [
+        {
+          "expr": "sum(round(increase(supply_alerts_total[$window])))",
+          "query": "sum(round(increase(supply_alerts_total[$window])))",
+          "target": "",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 10,
+          "instant": false,
+          "datasource": "Prometheus"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Alerts (last $window)",
+      "transparent": false,
+      "transformations": [],
+      "options": {
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": null,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": ""
+          },
+          "color": null,
+          "custom": {},
+          "decimals": 0,
+          "mappings": [],
+          "unit": "s",
+          "noValue": "none"
+        },
+        "overrides": []
+      },
+      "height": null,
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "hideTimeOverride": false,
+      "id": 2,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "minSpan": null,
+      "repeat": null,
+      "repeatDirection": null,
+      "maxPerRow": null,
+      "span": null,
+      "targets": [
+        {
+          "expr": "time() - supply_alert_last_timestamp_seconds > 0",
+          "query": "time() - supply_alert_last_timestamp_seconds > 0",
+          "target": "",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 10,
+          "instant": false,
+          "datasource": "Prometheus"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Seconds since last alert",
+      "transparent": false,
+      "transformations": [],
+      "options": {
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": null,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": ""
+          },
+          "color": null,
+          "custom": {},
+          "decimals": null,
+          "mappings": [],
+          "unit": "none",
+          "noValue": "none"
+        },
+        "overrides": []
+      },
+      "height": null,
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "hideTimeOverride": false,
+      "id": 3,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "minSpan": null,
+      "repeat": null,
+      "repeatDirection": null,
+      "maxPerRow": null,
+      "span": null,
+      "targets": [
+        {
+          "expr": "up{job=\"alert-exporter\"}",
+          "query": "up{job=\"alert-exporter\"}",
+          "target": "",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 10,
+          "instant": false,
+          "datasource": "Prometheus"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Exporter up (1 = yes)",
+      "transparent": false,
+      "transformations": [],
+      "options": {
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": null,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": ""
+          },
+          "color": null,
+          "custom": {},
+          "decimals": 0,
+          "mappings": [],
+          "unit": "none",
+          "noValue": "none"
+        },
+        "overrides": []
+      },
+      "height": null,
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "hideTimeOverride": false,
+      "id": 4,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "minSpan": null,
+      "repeat": null,
+      "repeatDirection": null,
+      "maxPerRow": null,
+      "span": null,
+      "targets": [
+        {
+          "expr": "sum(supply_alert_bad_messages_total)",
+          "query": "sum(supply_alert_bad_messages_total)",
+          "target": "",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "",
+          "metric": "",
+          "refId": "A",
+          "step": 10,
+          "instant": false,
+          "datasource": "Prometheus"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Unreadable alert messages",
+      "transparent": false,
+      "transformations": [],
+      "options": {
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      },
+      "type": "stat"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": null,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "axisLabel": "",
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "barAlignment": 0,
+            "lineWidth": 2,
+            "fillOpacity": 20,
+            "gradientMode": "none",
+            "spanNulls": false,
+            "showPoints": "auto",
+            "pointSize": 5,
+            "stacking": {},
+            "scaleDistribution": {
+              "type": "linear",
+              "log": 2
+            },
+            "hideFrom": {
+              "tooltip": false,
+              "viz": false,
+              "legend": false
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            },
+            "axisSoftMin": null,
+            "axisSoftMax": null
+          },
+          "mappings": [],
+          "min": null,
+          "max": null,
+          "decimals": null,
+          "unit": ""
+        },
+        "overrides": []
+      },
+      "height": null,
+      "gridPos": {
+        "h": 8,
+        "w": 16,
+        "x": 0,
+        "y": 4
+      },
+      "hideTimeOverride": false,
+      "id": 5,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "minSpan": null,
+      "repeat": null,
+      "repeatDirection": null,
+      "maxPerRow": null,
+      "span": null,
+      "targets": [
+        {
+          "expr": "sum by (anomaly_type) (increase(supply_alerts_total[5m]))",
+          "query": "sum by (anomaly_type) (increase(supply_alerts_total[5m]))",
+          "target": "",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{anomaly_type}}",
+          "metric": "",
+          "refId": "A",
+          "step": 10,
+          "instant": false,
+          "datasource": "Prometheus"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Alerts per 5 min, by type",
+      "transparent": false,
+      "transformations": [],
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "type": "timeseries"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": null,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "op": "gt",
+                "yaxis": "left",
+                "color": "green",
+                "line": true,
+                "index": 0,
+                "value": "null"
+              },
+              {
+                "op": "gt",
+                "yaxis": "left",
+                "color": "yellow",
+                "line": true,
+                "index": 1,
+                "value": 120.0
+              },
+              {
+                "op": "gt",
+                "yaxis": "left",
+                "color": "red",
+                "line": true,
+                "index": 2,
+                "value": 180.0
+              }
+            ]
+          }
+        }
+      },
+      "height": null,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 4
+      },
+      "hideTimeOverride": false,
+      "id": 6,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "minSpan": null,
+      "repeat": null,
+      "repeatDirection": null,
+      "maxPerRow": null,
+      "span": null,
+      "targets": [
+        {
+          "expr": "sum by (anomaly_type) (round(increase(supply_alerts_total[$window])))",
+          "query": "sum by (anomaly_type) (round(increase(supply_alerts_total[$window])))",
+          "target": "",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{anomaly_type}}",
+          "metric": "",
+          "refId": "A",
+          "step": 10,
+          "instant": true,
+          "datasource": "Prometheus"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Alerts by type (last $window)",
+      "transparent": false,
+      "transformations": [],
+      "options": {
+        "displayMode": "lcd",
+        "fieldOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "defaults": {
+            "decimals": 0,
+            "max": 240,
+            "min": 0,
+            "title": null,
+            "unit": "none",
+            "links": []
+          },
+          "limit": null,
+          "mappings": [],
+          "override": {},
+          "thresholds": [
+            {
+              "op": "gt",
+              "yaxis": "left",
+              "color": "green",
+              "line": true,
+              "index": 0,
+              "value": "null"
+            },
+            {
+              "op": "gt",
+              "yaxis": "left",
+              "color": "yellow",
+              "line": true,
+              "index": 1,
+              "value": 120.0
+            },
+            {
+              "op": "gt",
+              "yaxis": "left",
+              "color": "red",
+              "line": true,
+              "index": 2,
+              "value": 180.0
+            }
+          ],
+          "values": false
+        },
+        "orientation": "horizontal",
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": null,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "op": "gt",
+                "yaxis": "left",
+                "color": "green",
+                "line": true,
+                "index": 0,
+                "value": "null"
+              },
+              {
+                "op": "gt",
+                "yaxis": "left",
+                "color": "yellow",
+                "line": true,
+                "index": 1,
+                "value": 120.0
+              },
+              {
+                "op": "gt",
+                "yaxis": "left",
+                "color": "red",
+                "line": true,
+                "index": 2,
+                "value": 180.0
+              }
+            ]
+          }
+        }
+      },
+      "height": null,
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 0,
+        "y": 12
+      },
+      "hideTimeOverride": false,
+      "id": 7,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "minSpan": null,
+      "repeat": null,
+      "repeatDirection": null,
+      "maxPerRow": null,
+      "span": null,
+      "targets": [
+        {
+          "expr": "topk(10, sum by (vehicle_id) (round(increase(supply_alerts_by_vehicle_total[$window]))) > 0)",
+          "query": "topk(10, sum by (vehicle_id) (round(increase(supply_alerts_by_vehicle_total[$window]))) > 0)",
+          "target": "",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{vehicle_id}}",
+          "metric": "",
+          "refId": "A",
+          "step": 10,
+          "instant": true,
+          "datasource": "Prometheus"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Top 10 vehicles by alerts (last $window)",
+      "transparent": false,
+      "transformations": [],
+      "options": {
+        "displayMode": "lcd",
+        "fieldOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "defaults": {
+            "decimals": 0,
+            "max": 240,
+            "min": 0,
+            "title": null,
+            "unit": "none",
+            "links": []
+          },
+          "limit": null,
+          "mappings": [],
+          "override": {},
+          "thresholds": [
+            {
+              "op": "gt",
+              "yaxis": "left",
+              "color": "green",
+              "line": true,
+              "index": 0,
+              "value": "null"
+            },
+            {
+              "op": "gt",
+              "yaxis": "left",
+              "color": "yellow",
+              "line": true,
+              "index": 1,
+              "value": 120.0
+            },
+            {
+              "op": "gt",
+              "yaxis": "left",
+              "color": "red",
+              "line": true,
+              "index": 2,
+              "value": 180.0
+            }
+          ],
+          "values": false
+        },
+        "orientation": "horizontal",
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": null,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "axisLabel": "",
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "barAlignment": 0,
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "spanNulls": false,
+            "showPoints": "auto",
+            "pointSize": 5,
+            "stacking": {},
+            "scaleDistribution": {
+              "type": "linear",
+              "log": 2
+            },
+            "hideFrom": {
+              "tooltip": false,
+              "viz": false,
+              "legend": false
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            },
+            "axisSoftMin": null,
+            "axisSoftMax": null
+          },
+          "mappings": [],
+          "min": null,
+          "max": null,
+          "decimals": null,
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "height": null,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 23
+      },
+      "hideTimeOverride": false,
+      "id": 8,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "minSpan": null,
+      "repeat": null,
+      "repeatDirection": null,
+      "maxPerRow": null,
+      "span": null,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum by (le, anomaly_type) (rate(supply_alert_duration_seconds_bucket[10m])))",
+          "query": "histogram_quantile(0.95, sum by (le, anomaly_type) (rate(supply_alert_duration_seconds_bucket[10m])))",
+          "target": "",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{anomaly_type}}",
+          "metric": "",
+          "refId": "A",
+          "step": 10,
+          "instant": false,
+          "datasource": "Prometheus"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Episode length p95 (seconds)",
+      "transparent": false,
+      "transformations": [],
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "type": "timeseries"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "Prometheus",
+      "description": null,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": []
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisPlacement": "auto",
+            "axisLabel": "",
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "barAlignment": 0,
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "spanNulls": false,
+            "showPoints": "auto",
+            "pointSize": 5,
+            "stacking": {},
+            "scaleDistribution": {
+              "type": "linear",
+              "log": 2
+            },
+            "hideFrom": {
+              "tooltip": false,
+              "viz": false,
+              "legend": false
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            },
+            "axisSoftMin": null,
+            "axisSoftMax": null
+          },
+          "mappings": [],
+          "min": null,
+          "max": null,
+          "decimals": null,
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "height": null,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 23
+      },
+      "hideTimeOverride": false,
+      "id": 9,
+      "interval": null,
+      "links": [],
+      "maxDataPoints": 100,
+      "minSpan": null,
+      "repeat": null,
+      "repeatDirection": null,
+      "maxPerRow": null,
+      "span": null,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum by (le, anomaly_type) (rate(supply_alert_detection_delay_seconds_bucket[10m])))",
+          "query": "histogram_quantile(0.95, sum by (le, anomaly_type) (rate(supply_alert_detection_delay_seconds_bucket[10m])))",
+          "target": "",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{anomaly_type}}",
+          "metric": "",
+          "refId": "A",
+          "step": 10,
+          "instant": false,
+          "datasource": "Prometheus"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Detection delay p95 (seconds)",
+      "transparent": false,
+      "transformations": [],
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "type": "timeseries"
+    },
+    {
+      "id": 10,
+      "type": "table",
+      "title": "Top 10 vehicles - alerts by type (last $window)",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 16,
+        "x": 8,
+        "y": 12
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "expr": "sum by (vehicle_id, anomaly_type) (round(increase(supply_alerts_by_vehicle_total[$window]))) > 0 and on (vehicle_id) topk(10, sum by (vehicle_id) (round(increase(supply_alerts_by_vehicle_total[$window]))) > 0)",
+          "format": "table",
+          "instant": true,
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "groupingToMatrix",
+          "options": {
+            "columnField": "anomaly_type",
+            "rowField": "vehicle_id",
+            "valueField": "Value"
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "fields": {},
+            "conversions": [
+              {
+                "targetField": "temperature_breach",
+                "destinationType": "number"
+              },
+              {
+                "targetField": "excessive_idling",
+                "destinationType": "number"
+              },
+              {
+                "targetField": "route_deviation",
+                "destinationType": "number"
+              },
+              {
+                "targetField": "overspeed",
+                "destinationType": "number"
+              }
+            ]
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "mode": "reduceRow",
+            "reduce": {
+              "reducer": "sum"
+            },
+            "alias": "Total"
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "field": "Total",
+                "desc": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "renameByName": {
+              "vehicle_id\\anomaly_type": "Vehicle"
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "decimals": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 120
+              },
+              {
+                "color": "red",
+                "value": 180
+              }
+            ]
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "color-background"
+            }
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "string"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              },
+              {
+                "id": "custom.align",
+                "value": "left"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "yellow",
+                      "value": 120.0
+                    },
+                    {
+                      "color": "red",
+                      "value": 180.0
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-background"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm"
+      }
+    }
+  ],
+  "refresh": "10s",
+  "rows": [],
+  "schemaVersion": 39,
+  "sharedCrosshair": false,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "1h",
+          "value": "1h"
+        },
+        "datasource": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Count window",
+        "multi": false,
+        "name": "window",
+        "options": [
+          {
+            "selected": false,
+            "text": "15m",
+            "value": "15m"
+          },
+          {
+            "selected": true,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "24h",
+            "value": "24h"
+          }
+        ],
+        "query": "15m,1h,6h,24h",
+        "refresh": 1,
+        "regex": null,
+        "sort": 1,
+        "type": "interval",
+        "useTags": false,
+        "tagsQuery": null,
+        "tagValuesQuery": null,
+        "auto": false,
+        "auto_min": "10s",
+        "auto_count": 30
+      }
+    ]
+  },
+  "title": "Supply Chain - Flink Alerts",
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ],
+    "nowDelay": null,
+    "hidden": false
+  },
+  "timezone": "utc",
+  "version": 0,
+  "uid": "supply-chain-alerts"
+}

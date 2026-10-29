@@ -1,0 +1,6 @@
+.env
+data/
+data_backup
+alerts.jsonl
+flink-lib/*.jar
+__pycache__/
